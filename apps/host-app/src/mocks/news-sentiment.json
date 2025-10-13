@@ -1,0 +1,162 @@
+{
+  "items": "50",
+  "sentiment_score_definition": "x <= -0.35: Bearish, -0.35 < x <= -0.15: Somewhat-Bearish, -0.15 < x < 0.15: Neutral, 0.15 <= x < 0.35: Somewhat-Bullish, x >= 0.35: Bullish",
+  "relevance_score_definition": "0 < x <= 1, where a higher score indicates higher relevance",
+  "feed": [
+    {
+      "title": "Apple Reports Strong Q4 Earnings with Record iPhone Sales",
+      "url": "https://example.com/apple-q4-earnings",
+      "time_published": "20241115T160000",
+      "authors": ["John Smith", "Jane Doe"],
+      "summary": "Apple Inc. reported better-than-expected fourth quarter earnings, driven by strong iPhone 15 sales and robust services revenue growth.",
+      "banner_image": "https://example.com/images/apple-earnings.jpg",
+      "source": "Financial Times",
+      "category_within_source": "Technology",
+      "source_domain": "ft.com",
+      "topics": [
+        {
+          "topic": "Earnings",
+          "relevance_score": "0.999"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.8"
+        }
+      ],
+      "overall_sentiment_score": 0.4,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.999",
+          "ticker_sentiment_score": "0.4",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Apple's New AI Features Drive Developer Interest",
+      "url": "https://example.com/apple-ai-features",
+      "time_published": "20241114T140000",
+      "authors": ["Tech Reporter"],
+      "summary": "Apple's latest AI capabilities announced at WWDC are generating significant interest among developers and could boost App Store revenue.",
+      "banner_image": "https://example.com/images/apple-ai.jpg",
+      "source": "TechCrunch",
+      "category_within_source": "Technology",
+      "source_domain": "techcrunch.com",
+      "topics": [
+        {
+          "topic": "Technology",
+          "relevance_score": "0.9"
+        },
+        {
+          "topic": "Artificial Intelligence",
+          "relevance_score": "0.8"
+        }
+      ],
+      "overall_sentiment_score": 0.2,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.8",
+          "ticker_sentiment_score": "0.2",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Apple Faces Regulatory Challenges in European Markets",
+      "url": "https://example.com/apple-eu-regulation",
+      "time_published": "20241113T100000",
+      "authors": ["EU Correspondent"],
+      "summary": "European regulators are investigating Apple's App Store practices, potentially impacting the company's revenue from European markets.",
+      "banner_image": "https://example.com/images/apple-regulation.jpg",
+      "source": "Reuters",
+      "category_within_source": "Business",
+      "source_domain": "reuters.com",
+      "topics": [
+        {
+          "topic": "Regulation",
+          "relevance_score": "0.9"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.7"
+        }
+      ],
+      "overall_sentiment_score": -0.3,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.9",
+          "ticker_sentiment_score": "-0.3",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        }
+      ]
+    },
+    {
+      "title": "Apple's Services Revenue Continues Strong Growth Trajectory",
+      "url": "https://example.com/apple-services-growth",
+      "time_published": "20241112T120000",
+      "authors": ["Market Analyst"],
+      "summary": "Apple's services division shows continued strong growth, with App Store, iCloud, and Apple Music driving revenue diversification.",
+      "banner_image": "https://example.com/images/apple-services.jpg",
+      "source": "Bloomberg",
+      "category_within_source": "Technology",
+      "source_domain": "bloomberg.com",
+      "topics": [
+        {
+          "topic": "Earnings",
+          "relevance_score": "0.8"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.9"
+        }
+      ],
+      "overall_sentiment_score": 0.3,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.9",
+          "ticker_sentiment_score": "0.3",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Apple Stock Reaches New All-Time High on Strong Fundamentals",
+      "url": "https://example.com/apple-stock-high",
+      "time_published": "20241111T150000",
+      "authors": ["Stock Analyst"],
+      "summary": "Apple's stock price reached a new all-time high, driven by strong fundamentals and positive analyst sentiment about future growth prospects.",
+      "banner_image": "https://example.com/images/apple-stock.jpg",
+      "source": "MarketWatch",
+      "category_within_source": "Markets",
+      "source_domain": "marketwatch.com",
+      "topics": [
+        {
+          "topic": "Financial Markets",
+          "relevance_score": "0.9"
+        },
+        {
+          "topic": "Technology",
+          "relevance_score": "0.8"
+        }
+      ],
+      "overall_sentiment_score": 0.5,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.95",
+          "ticker_sentiment_score": "0.5",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    }
+  ]
+}

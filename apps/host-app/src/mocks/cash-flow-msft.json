@@ -1,0 +1,27 @@
+{
+  "symbol": "MSFT",
+  "annualReports": [
+    {
+      "fiscalDateEnding": "2024-06-30",
+      "reportedCurrency": "USD",
+      "operatingCashflow": "95000000000",
+      "cashflowFromInvestment": "-35000000000",
+      "cashflowFromFinancing": "-45000000000",
+      "changeInCashAndCashEquivalents": "15000000000",
+      "capitalExpenditures": "-30000000000",
+      "dividendPayout": "-20000000000"
+    },
+    {
+      "fiscalDateEnding": "2023-06-30",
+      "reportedCurrency": "USD",
+      "operatingCashflow": "85000000000",
+      "cashflowFromInvestment": "-30000000000",
+      "cashflowFromFinancing": "-40000000000",
+      "changeInCashAndCashEquivalents": "15000000000",
+      "capitalExpenditures": "-25000000000",
+      "dividendPayout": "-18000000000"
+    }
+  ]
+}
+
+

@@ -1,0 +1,27 @@
+{
+  "symbol": "MSFT",
+  "annualReports": [
+    {
+      "fiscalDateEnding": "2024-06-30",
+      "reportedCurrency": "USD",
+      "totalAssets": "470000000000",
+      "totalCurrentAssets": "210000000000",
+      "totalLiabilities": "210000000000",
+      "totalCurrentLiabilities": "95000000000",
+      "totalShareholderEquity": "260000000000",
+      "cashAndCashEquivalentsAtCarryingValue": "80000000000"
+    },
+    {
+      "fiscalDateEnding": "2023-06-30",
+      "reportedCurrency": "USD",
+      "totalAssets": "440000000000",
+      "totalCurrentAssets": "190000000000",
+      "totalLiabilities": "200000000000",
+      "totalCurrentLiabilities": "90000000000",
+      "totalShareholderEquity": "240000000000",
+      "cashAndCashEquivalentsAtCarryingValue": "70000000000"
+    }
+  ]
+}
+
+

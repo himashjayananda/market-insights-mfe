@@ -1,0 +1,60 @@
+{
+  "symbol": "MSFT",
+  "annualReports": [
+    {
+      "fiscalDateEnding": "2024-06-30",
+      "reportedCurrency": "USD",
+      "totalRevenue": "245000000000",
+      "totalOperatingExpense": "170000000000",
+      "costOfRevenue": "95000000000",
+      "grossProfit": "150000000000",
+      "ebit": "90000000000",
+      "ebitda": "105000000000",
+      "depreciation": "15000000000",
+      "depreciationAndAmortization": "18000000000",
+      "incomeBeforeTax": "90000000000",
+      "incomeTaxExpense": "14000000000",
+      "interestIncome": "3000000000",
+      "interestExpense": "2000000000",
+      "netIncome": "76000000000",
+      "researchAndDevelopment": "27000000000"
+    },
+    {
+      "fiscalDateEnding": "2023-06-30",
+      "reportedCurrency": "USD",
+      "totalRevenue": "212000000000",
+      "totalOperatingExpense": "155000000000",
+      "costOfRevenue": "90000000000",
+      "grossProfit": "122000000000",
+      "ebit": "82000000000",
+      "ebitda": "96000000000",
+      "depreciation": "14000000000",
+      "depreciationAndAmortization": "16000000000",
+      "incomeBeforeTax": "82000000000",
+      "incomeTaxExpense": "12000000000",
+      "interestIncome": "2500000000",
+      "interestExpense": "1800000000",
+      "netIncome": "70000000000",
+      "researchAndDevelopment": "24000000000"
+    }
+  ],
+  "quarterlyReports": [
+    {
+      "fiscalDateEnding": "2024-06-30",
+      "reportedCurrency": "USD",
+      "totalRevenue": "62000000000",
+      "totalOperatingExpense": "43000000000",
+      "costOfRevenue": "24000000000",
+      "grossProfit": "38000000000",
+      "ebit": "23000000000",
+      "ebitda": "26000000000",
+      "depreciation": "4500000000",
+      "incomeBeforeTax": "23000000000",
+      "incomeTaxExpense": "3500000000",
+      "netIncome": "19500000000",
+      "researchAndDevelopment": "7000000000"
+    }
+  ]
+}
+
+
