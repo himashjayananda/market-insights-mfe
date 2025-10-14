@@ -20,6 +20,16 @@
       "changeInCashAndCashEquivalents": "15000000000",
       "capitalExpenditures": "-25000000000",
       "dividendPayout": "-18000000000"
+    },
+    {
+      "fiscalDateEnding": "2022-06-30",
+      "reportedCurrency": "USD",
+      "operatingCashflow": "78000000000",
+      "cashflowFromInvestment": "-28000000000",
+      "cashflowFromFinancing": "-36000000000",
+      "changeInCashAndCashEquivalents": "14000000000",
+      "capitalExpenditures": "-23000000000",
+      "dividendPayout": "-17000000000"
     }
   ]
 }

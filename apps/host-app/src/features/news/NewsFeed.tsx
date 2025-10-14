@@ -95,7 +95,22 @@ const NewsFeed: React.FC = () => {
 
   const formatDate = (timePublished: string) => {
     try {
-      const date = new Date(timePublished);
+      // Handle different date formats
+      let date: Date;
+      if (timePublished.includes("T") && timePublished.length === 15) {
+        // Format: 20241115T160000
+        const year = timePublished.substring(0, 4);
+        const month = timePublished.substring(4, 6);
+        const day = timePublished.substring(6, 8);
+        const hour = timePublished.substring(9, 11);
+        const minute = timePublished.substring(11, 13);
+        const second = timePublished.substring(13, 15);
+        date = new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}`);
+      } else {
+        // Standard ISO format
+        date = new Date(timePublished);
+      }
+
       return date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
@@ -127,6 +142,41 @@ const NewsFeed: React.FC = () => {
 
   const articles = newsData.feed || [];
 
+  // Calculate sentiment summary
+  const sentimentSummary = React.useMemo(() => {
+    if (!articles.length) return null;
+
+    const sentiments = articles.map(
+      (article) => article.overall_sentiment_score
+    );
+    const avgSentiment =
+      sentiments.reduce((sum, score) => sum + score, 0) / sentiments.length;
+
+    const bullishCount = articles.filter(
+      (a) => a.overall_sentiment_score > 0.15
+    ).length;
+    const bearishCount = articles.filter(
+      (a) => a.overall_sentiment_score < -0.15
+    ).length;
+    const neutralCount = articles.length - bullishCount - bearishCount;
+
+    return {
+      averageScore: avgSentiment,
+      bullishCount,
+      bearishCount,
+      neutralCount,
+      totalArticles: articles.length,
+    };
+  }, [articles]);
+
+  const getSentimentLabel = (score: number) => {
+    if (score >= 0.35) return "Bullish";
+    if (score >= 0.15) return "Somewhat-Bullish";
+    if (score <= -0.35) return "Bearish";
+    if (score <= -0.15) return "Somewhat-Bearish";
+    return "Neutral";
+  };
+
   return (
     <Box>
       {/* Section header */}
@@ -138,6 +188,68 @@ const NewsFeed: React.FC = () => {
           Latest news and sentiment analysis for {ticker}
         </Typography>
       </Box>
+
+      {/* Sentiment Summary */}
+      {sentimentSummary && (
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
+            Market Sentiment Summary
+          </Typography>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "repeat(2, 1fr)",
+                md: "repeat(4, 1fr)",
+              },
+              gap: 3,
+            }}
+          >
+            <Card sx={{ p: 2 }}>
+              <Typography
+                variant="h4"
+                component="div"
+                color={getSentimentColor(
+                  getSentimentLabel(sentimentSummary.averageScore)
+                )}
+              >
+                {getSentimentLabel(sentimentSummary.averageScore)}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Overall Sentiment
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                Score: {sentimentSummary.averageScore.toFixed(2)}
+              </Typography>
+            </Card>
+            <Card sx={{ p: 2 }}>
+              <Typography variant="h4" component="div" color="success.main">
+                {sentimentSummary.bullishCount}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Bullish Articles
+              </Typography>
+            </Card>
+            <Card sx={{ p: 2 }}>
+              <Typography variant="h4" component="div" color="error.main">
+                {sentimentSummary.bearishCount}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Bearish Articles
+              </Typography>
+            </Card>
+            <Card sx={{ p: 2 }}>
+              <Typography variant="h4" component="div" color="text.secondary">
+                {sentimentSummary.neutralCount}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Neutral Articles
+              </Typography>
+            </Card>
+          </Box>
+        </Box>
+      )}
 
       {/* News Articles */}
       {articles.length === 0 ? (

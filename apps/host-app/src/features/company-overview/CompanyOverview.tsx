@@ -168,11 +168,21 @@ const CompanyOverview: React.FC = () => {
                   series={[
                     {
                       id: "close",
+                      label: "Close price",
                       data: points.map((p) => p.close),
                       showMark: false,
                       color: "#1E6FFF",
                       area: true,
                       curve: "monotoneX",
+                      valueFormatter: (v: number | null) =>
+                        v == null
+                          ? "-"
+                          : new Intl.NumberFormat("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            }).format(v),
                     },
                   ]}
                   xAxis={[
@@ -261,44 +271,200 @@ const CompanyOverview: React.FC = () => {
         </CustomCard>
       </Box>
 
-      {/* Additional Information */}
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" },
-          gap: 3,
-          mb: 4,
-        }}
-      >
-        {/* P/E Ratio */}
-        <CustomCard>
-          <Typography variant="h5" component="div">
-            {formatRatio(company.PERatio)}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            P/E Ratio
-          </Typography>
-        </CustomCard>
+      {/* Technical Indicators */}
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
+          Technical Indicators
+        </Typography>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(4, 1fr)",
+            },
+            gap: 3,
+          }}
+        >
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {company["52WeekHigh"]}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              52-Week High
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {company["52WeekLow"]}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              52-Week Low
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {company["50DayMovingAverage"]}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              50-Day MA
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {company["200DayMovingAverage"]}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              200-Day MA
+            </Typography>
+          </CustomCard>
+        </Box>
+      </Box>
 
-        {/* EPS */}
-        <CustomCard>
-          <Typography variant="h5" component="div">
-            {formatCurrency(company.EPS)}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            EPS (TTM)
-          </Typography>
-        </CustomCard>
+      {/* Growth Metrics */}
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
+          Growth Metrics
+        </Typography>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+            },
+            gap: 3,
+          }}
+        >
+          <CustomCard>
+            <Typography
+              variant="h6"
+              component="div"
+              color={getPriceChangeColor(company.QuarterlyEarningsGrowthYOY)}
+            >
+              {formatPercentage(company.QuarterlyEarningsGrowthYOY)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Quarterly Earnings Growth (YoY)
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography
+              variant="h6"
+              component="div"
+              color={getPriceChangeColor(company.QuarterlyRevenueGrowthYOY)}
+            >
+              {formatPercentage(company.QuarterlyRevenueGrowthYOY)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Quarterly Revenue Growth (YoY)
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {formatRatio(company.Beta)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Beta (Volatility)
+            </Typography>
+          </CustomCard>
+        </Box>
+      </Box>
 
-        {/* Dividend Yield */}
-        <CustomCard>
-          <Typography variant="h5" component="div">
-            {formatPercentage(company.DividendYield)}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Dividend Yield
-          </Typography>
-        </CustomCard>
+      {/* Valuation Metrics */}
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
+          Valuation Metrics
+        </Typography>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(4, 1fr)",
+            },
+            gap: 3,
+          }}
+        >
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {formatRatio(company.PERatio)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              P/E Ratio (TTM)
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {formatRatio(company.ForwardPE)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Forward P/E
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {formatRatio(company.PriceToSalesRatioTTM)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Price-to-Sales
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {formatRatio(company.PriceToBookRatio)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Price-to-Book
+            </Typography>
+          </CustomCard>
+        </Box>
+      </Box>
+
+      {/* Profitability Metrics */}
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
+          Profitability & Efficiency
+        </Typography>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+            },
+            gap: 3,
+          }}
+        >
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {formatCurrency(company.EPS)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              EPS (TTM)
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {formatPercentage(company.DividendYield)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Dividend Yield
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {formatCurrency(company.DividendPerShare)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Dividend Per Share
+            </Typography>
+          </CustomCard>
+        </Box>
       </Box>
 
       {/* Financial Highlights */}
@@ -334,9 +500,33 @@ const CompanyOverview: React.FC = () => {
               </Typography>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant="body2">Operating Margin:</Typography>
+              <Typography variant="body2" fontWeight="medium">
+                {formatPercentage(company.OperatingMarginTTM)}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant="body2">ROA (TTM):</Typography>
+              <Typography variant="body2" fontWeight="medium">
+                {formatPercentage(company.ReturnOnAssetsTTM)}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography variant="body2">ROE (TTM):</Typography>
               <Typography variant="body2" fontWeight="medium">
                 {formatPercentage(company.ReturnOnEquityTTM)}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant="body2">EBITDA:</Typography>
+              <Typography variant="body2" fontWeight="medium">
+                {formatCurrency(company.EBITDA)}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant="body2">Shares Outstanding:</Typography>
+              <Typography variant="body2" fontWeight="medium">
+                {formatCurrency(company.SharesOutstanding)}
               </Typography>
             </Box>
           </Box>
@@ -349,9 +539,21 @@ const CompanyOverview: React.FC = () => {
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant="body2">Sector:</Typography>
+              <Typography variant="body2" fontWeight="medium">
+                {company.Sector}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography variant="body2">Industry:</Typography>
               <Typography variant="body2" fontWeight="medium">
                 {company.Industry}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant="body2">Exchange:</Typography>
+              <Typography variant="body2" fontWeight="medium">
+                {company.Exchange}
               </Typography>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -372,8 +574,63 @@ const CompanyOverview: React.FC = () => {
                 {company.FiscalYearEnd}
               </Typography>
             </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant="body2">Latest Quarter:</Typography>
+              <Typography variant="body2" fontWeight="medium">
+                {company.LatestQuarter}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant="body2">CIK:</Typography>
+              <Typography variant="body2" fontWeight="medium">
+                {company.CIK}
+              </Typography>
+            </Box>
           </Box>
         </CustomCard>
+      </Box>
+
+      {/* Earnings Calendar */}
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
+          Earnings & Dividends
+        </Typography>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+            },
+            gap: 3,
+          }}
+        >
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {company.DividendDate}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Next Dividend Date
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {company.ExDividendDate}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Ex-Dividend Date
+            </Typography>
+          </CustomCard>
+          <CustomCard>
+            <Typography variant="h6" component="div">
+              {company.LatestQuarter}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Latest Quarter
+            </Typography>
+          </CustomCard>
+        </Box>
       </Box>
 
       {/* Navigation buttons removed in favor of tabs */}

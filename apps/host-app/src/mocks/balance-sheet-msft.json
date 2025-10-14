@@ -20,6 +20,16 @@
       "totalCurrentLiabilities": "90000000000",
       "totalShareholderEquity": "240000000000",
       "cashAndCashEquivalentsAtCarryingValue": "70000000000"
+    },
+    {
+      "fiscalDateEnding": "2022-06-30",
+      "reportedCurrency": "USD",
+      "totalAssets": "420000000000",
+      "totalCurrentAssets": "180000000000",
+      "totalLiabilities": "190000000000",
+      "totalCurrentLiabilities": "85000000000",
+      "totalShareholderEquity": "230000000000",
+      "cashAndCashEquivalentsAtCarryingValue": "65000000000"
     }
   ]
 }

@@ -36,6 +36,24 @@
       "interestExpense": "1800000000",
       "netIncome": "70000000000",
       "researchAndDevelopment": "24000000000"
+    },
+    {
+      "fiscalDateEnding": "2022-06-30",
+      "reportedCurrency": "USD",
+      "totalRevenue": "198000000000",
+      "totalOperatingExpense": "150000000000",
+      "costOfRevenue": "85000000000",
+      "grossProfit": "113000000000",
+      "ebit": "76000000000",
+      "ebitda": "88000000000",
+      "depreciation": "13000000000",
+      "depreciationAndAmortization": "15000000000",
+      "incomeBeforeTax": "76000000000",
+      "incomeTaxExpense": "11000000000",
+      "interestIncome": "2200000000",
+      "interestExpense": "1600000000",
+      "netIncome": "65000000000",
+      "researchAndDevelopment": "22000000000"
     }
   ],
   "quarterlyReports": [

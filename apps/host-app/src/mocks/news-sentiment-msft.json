@@ -2,12 +2,11 @@
   "items": "5",
   "sentiment_score_definition": "The sentiment score is a float within the range [-1, 1]. -1 means extremely bearish, 1 means extremely bullish.",
   "relevance_score_definition": "The relevance score is a float within the range [0, 1], with 0 being not relevant and 1 being highly relevant.",
-  "ticker": "MSFT",
   "feed": [
     {
       "title": "Microsoft announces new Azure AI capabilities",
       "url": "https://example.com/microsoft-azure-ai",
-      "time_published": "2024-12-20T14:12:00Z",
+      "time_published": "20241220T141200",
       "authors": ["Jane Doe"],
       "summary": "Microsoft expands Azure AI services to include new foundation models and tooling for enterprises.",
       "banner_image": "",
@@ -32,7 +31,7 @@
     {
       "title": "Windows revenue steady amid PC rebound",
       "url": "https://example.com/windows-revenue",
-      "time_published": "2024-12-18T09:30:00Z",
+      "time_published": "20241218T093000",
       "authors": ["John Smith"],
       "summary": "A modest recovery in global PC shipments supports Windows licensing revenue.",
       "banner_image": "",
@@ -57,7 +56,7 @@
     {
       "title": "Microsoft invests in cybersecurity startup",
       "url": "https://example.com/msft-cyber-investment",
-      "time_published": "2024-12-16T16:05:00Z",
+      "time_published": "20241216T160500",
       "authors": ["Alex Lee"],
       "summary": "New strategic investment aims to bolster cloud-native security offerings.",
       "banner_image": "",
@@ -81,7 +80,7 @@
     {
       "title": "Gaming segment faces regulatory delays",
       "url": "https://example.com/xbox-regulatory",
-      "time_published": "2024-12-14T11:20:00Z",
+      "time_published": "20241214T112000",
       "authors": ["Priya Patel"],
       "summary": "International approvals for a gaming deal may extend into next year.",
       "banner_image": "",
@@ -106,7 +105,7 @@
     {
       "title": "Copilot adoption grows across Office suite",
       "url": "https://example.com/copilot-adoption",
-      "time_published": "2024-12-12T08:45:00Z",
+      "time_published": "20241212T084500",
       "authors": ["Sara Kim"],
       "summary": "Enterprises report productivity gains as Copilot usage scales company-wide.",
       "banner_image": "",

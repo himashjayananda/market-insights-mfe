@@ -166,6 +166,10 @@ export const theme = createTheme({
         body: {
           WebkitFontSmoothing: "antialiased",
           MozOsxFontSmoothing: "grayscale",
+          backgroundImage:
+            "radial-gradient(1000px 400px at 10% -10%, rgba(30, 111, 255, 0.06) 0%, rgba(30, 111, 255, 0) 60%), radial-gradient(800px 300px at 90% -10%, rgba(15, 23, 40, 0.06) 0%, rgba(15, 23, 40, 0) 60%)",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
         },
       },
     },
@@ -176,12 +180,22 @@ export const theme = createTheme({
           fontWeight: 600,
           borderRadius: 10,
           boxShadow: "none",
+          paddingInline: 16,
+          paddingBlock: 10,
         },
         containedPrimary: {
           backgroundImage: "linear-gradient(180deg, #2D7FFF 0%, #1E6FFF 100%)",
+          color: "#fff",
+          "&:hover": {
+            filter: "brightness(0.98)",
+          },
         },
         outlined: {
           borderColor: colors.grey[300],
+          "&:hover": {
+            borderColor: colors.primary[300],
+            backgroundColor: colors.primary[50],
+          },
         },
       },
     },
@@ -192,6 +206,12 @@ export const theme = createTheme({
           boxShadow:
             "0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.10)",
           border: `1px solid ${colors.grey[200]}`,
+          transition: "transform 120ms ease, box-shadow 120ms ease",
+          "&:hover": {
+            transform: "translateY(-2px)",
+            boxShadow:
+              "0 4px 10px rgba(16, 24, 40, 0.08), 0 6px 20px rgba(16, 24, 40, 0.06)",
+          },
         },
       },
     },
@@ -199,6 +219,9 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 10,
+          backgroundImage:
+            "linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.9))",
+          backdropFilter: "saturate(140%) blur(4px)",
         },
       },
     },
@@ -207,6 +230,17 @@ export const theme = createTheme({
         root: {
           "& .MuiOutlinedInput-root": {
             borderRadius: 10,
+            backgroundColor: "#fff",
+            "& fieldset": {
+              borderColor: colors.grey[300],
+            },
+            "&:hover fieldset": {
+              borderColor: colors.primary[300],
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: colors.primary[500],
+              boxShadow: `0 0 0 3px ${colors.primary[50]}`,
+            },
           },
         },
       },
@@ -219,6 +253,7 @@ export const theme = createTheme({
         indicator: {
           height: 3,
           borderRadius: 3,
+          backgroundColor: colors.primary[500],
         },
       },
     },
@@ -229,6 +264,10 @@ export const theme = createTheme({
           fontWeight: 600,
           minHeight: 44,
           paddingInline: 16,
+          color: colors.grey[600],
+          "&.Mui-selected": {
+            color: colors.primary[700],
+          },
         },
       },
     },
@@ -239,6 +278,9 @@ export const theme = createTheme({
           color: colors.grey[900],
           borderBottom: `1px solid ${colors.grey[200]}`,
           boxShadow: "none",
+          backdropFilter: "saturate(180%) blur(8px)",
+          backgroundImage:
+            "linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.8))",
         },
       },
     },
