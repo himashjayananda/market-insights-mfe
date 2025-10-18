@@ -67,3 +67,4 @@ export const formatChartDate = (iso: string) => {
     .toString()
     .padStart(2, "0")}`;
 };
+

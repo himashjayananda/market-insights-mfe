@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -11,7 +10,7 @@ import { TrendingUp, TrendingDown, AttachMoney } from "@mui/icons-material";
 import { useCompanyOverview, useDailyTimeSeries } from "./api/hooks";
 import { CustomCard } from "./components/Card";
 import { LineChart } from "@mui/x-charts";
-import { ErrorState } from "../../shared/components/States";
+import { ErrorState } from "./components/ErrorState";
 import {
   formatCurrency,
   formatRatio,
@@ -22,12 +21,14 @@ import {
   formatChartDate,
 } from "./utils";
 
-const Overview: React.FC = () => {
-  const { ticker } = useParams<{ ticker: string }>();
-  const { data: company, isLoading, error } = useCompanyOverview(ticker || "");
-  const { data: seriesData, isLoading: seriesLoading } = useDailyTimeSeries(
-    ticker || ""
-  );
+interface OverviewProps {
+  ticker: string;
+}
+
+const Overview: React.FC<OverviewProps> = ({ ticker }) => {
+  const { data: company, isLoading, error } = useCompanyOverview(ticker);
+  const { data: seriesData, isLoading: seriesLoading } =
+    useDailyTimeSeries(ticker);
   const [rangeDays, setRangeDays] = React.useState<7 | 30>(30);
   const handleRangeChange = (
     _: React.MouseEvent<HTMLElement>,
@@ -590,8 +591,6 @@ const Overview: React.FC = () => {
           </CustomCard>
         </Box>
       </Box>
-
-      {/* Navigation buttons removed in favor of tabs */}
     </Box>
   );
 };

@@ -28,3 +28,4 @@ export const CustomCard: React.FC<CustomCardProps> = ({
     </Card>
   );
 };
+

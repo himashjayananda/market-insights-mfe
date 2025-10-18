@@ -9,10 +9,11 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
     federation({
-      name: "host_app",
+      name: "overview_remote",
       filename: "remoteEntry.js",
-      remotes: {
-        overview_remote: "http://localhost:3002/assets/remoteEntry.js",
+      exposes: {
+        "./Overview": "./src/Overview.tsx",
+        "./api/hooks": "./src/api/hooks.ts",
       },
       shared: {
         react: {
@@ -51,11 +52,11 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 3000,
+    port: 3002,
     cors: true,
   },
   preview: {
-    port: 3000,
+    port: 3002,
   },
   build: {
     target: "esnext",
