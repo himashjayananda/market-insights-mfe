@@ -14,7 +14,7 @@ import { LineChart } from "@mui/x-charts";
 import { useDailyTimeSeries } from "../../shared/hooks/useApi";
 import { ErrorState } from "../../shared/components/States";
 
-const CompanyOverview: React.FC = () => {
+const Overview: React.FC = () => {
   const { ticker } = useParams<{ ticker: string }>();
   const { data: company, isLoading, error } = useCompanyOverview(ticker || "");
   const { data: seriesData, isLoading: seriesLoading } = useDailyTimeSeries(
@@ -638,4 +638,4 @@ const CompanyOverview: React.FC = () => {
   );
 };
 
-export default CompanyOverview;
+export default Overview;

@@ -19,6 +19,38 @@ const NewsFeed: React.FC = () => {
   const { ticker } = useParams<{ ticker: string }>();
   const { data: newsData, isLoading, error } = useCompanyNews(ticker || "");
 
+  // Memoize articles to prevent dependency issues
+  const articles = React.useMemo(() => {
+    return newsData?.feed || [];
+  }, [newsData?.feed]);
+
+  // Calculate sentiment summary - moved before early returns to fix hooks rules
+  const sentimentSummary = React.useMemo(() => {
+    if (!articles.length) return null;
+
+    const sentiments = articles.map(
+      (article) => article.overall_sentiment_score
+    );
+    const avgSentiment =
+      sentiments.reduce((sum, score) => sum + score, 0) / sentiments.length;
+
+    const bullishCount = articles.filter(
+      (a) => a.overall_sentiment_score > 0.15
+    ).length;
+    const bearishCount = articles.filter(
+      (a) => a.overall_sentiment_score < -0.15
+    ).length;
+    const neutralCount = articles.length - bullishCount - bearishCount;
+
+    return {
+      averageScore: avgSentiment,
+      bullishCount,
+      bearishCount,
+      neutralCount,
+      totalArticles: articles.length,
+    };
+  }, [articles]);
+
   if (isLoading) {
     return (
       <Box>
@@ -139,35 +171,6 @@ const NewsFeed: React.FC = () => {
         return "default";
     }
   };
-
-  const articles = newsData.feed || [];
-
-  // Calculate sentiment summary
-  const sentimentSummary = React.useMemo(() => {
-    if (!articles.length) return null;
-
-    const sentiments = articles.map(
-      (article) => article.overall_sentiment_score
-    );
-    const avgSentiment =
-      sentiments.reduce((sum, score) => sum + score, 0) / sentiments.length;
-
-    const bullishCount = articles.filter(
-      (a) => a.overall_sentiment_score > 0.15
-    ).length;
-    const bearishCount = articles.filter(
-      (a) => a.overall_sentiment_score < -0.15
-    ).length;
-    const neutralCount = articles.length - bullishCount - bearishCount;
-
-    return {
-      averageScore: avgSentiment,
-      bullishCount,
-      bearishCount,
-      neutralCount,
-      totalArticles: articles.length,
-    };
-  }, [articles]);
 
   const getSentimentLabel = (score: number) => {
     if (score >= 0.35) return "Bullish";
