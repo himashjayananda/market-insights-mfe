@@ -11,15 +11,6 @@ export const useCompanySearch = (keywords: string, enabled: boolean = true) => {
   });
 };
 
-export const useCompanyOverview = (symbol: string) => {
-  return useQuery({
-    queryKey: ["company-overview", symbol],
-    queryFn: () => mockApiClient.getCompanyOverview(symbol),
-    enabled: !!symbol,
-    staleTime: 10 * 60 * 1000, // 10 minutes
-  });
-};
-
 export const useIncomeStatement = (symbol: string) => {
   return useQuery({
     queryKey: ["income-statement", symbol],
@@ -53,14 +44,5 @@ export const useCompanyNews = (symbol: string) => {
     queryFn: () => mockApiClient.getNewsSentiment(symbol),
     enabled: !!symbol,
     staleTime: 5 * 60 * 1000, // 5 minutes
-  });
-};
-
-export const useDailyTimeSeries = (symbol: string) => {
-  return useQuery({
-    queryKey: ["time-series-daily", symbol],
-    queryFn: () => mockApiClient.getDailyTimeSeries(symbol),
-    enabled: !!symbol,
-    staleTime: 5 * 60 * 1000,
   });
 };

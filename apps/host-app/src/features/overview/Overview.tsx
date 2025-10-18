@@ -8,11 +8,19 @@ import {
 } from "@mui/material";
 import { Skeleton } from "@mui/material";
 import { TrendingUp, TrendingDown, AttachMoney } from "@mui/icons-material";
-import { useCompanyOverview } from "../../shared/hooks/useApi";
-import { CustomCard } from "../../shared/components/Card";
+import { useCompanyOverview, useDailyTimeSeries } from "./api/hooks";
+import { CustomCard } from "./components/Card";
 import { LineChart } from "@mui/x-charts";
-import { useDailyTimeSeries } from "../../shared/hooks/useApi";
 import { ErrorState } from "../../shared/components/States";
+import {
+  formatCurrency,
+  formatRatio,
+  formatPercentage,
+  getPriceChangeColor,
+  formatTimeSeriesData,
+  getChartLabelIndices,
+  formatChartDate,
+} from "./utils";
 
 const Overview: React.FC = () => {
   const { ticker } = useParams<{ ticker: string }>();
@@ -69,35 +77,6 @@ const Overview: React.FC = () => {
     );
   }
 
-  const formatCurrency = (value: string) => {
-    const num = parseFloat(value);
-    if (isNaN(num)) return "-";
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      notation: "compact",
-      maximumFractionDigits: 1,
-    }).format(num);
-  };
-
-  const formatRatio = (value: string) => {
-    const num = parseFloat(value);
-    if (isNaN(num)) return "-";
-    return num.toFixed(2);
-  };
-
-  const formatPercentage = (value: string) => {
-    const num = parseFloat(value);
-    if (isNaN(num)) return "-";
-    return `${(num * 100).toFixed(1)}%`;
-  };
-
-  const getPriceChangeColor = (value: string) => {
-    const num = parseFloat(value);
-    if (isNaN(num)) return "text.secondary";
-    return num >= 0 ? "success.main" : "error.main";
-  };
-
   const getPriceChangeIcon = (value: string) => {
     const num = parseFloat(value);
     if (isNaN(num)) return null;
@@ -131,29 +110,8 @@ const Overview: React.FC = () => {
           <Skeleton variant="rectangular" height={260} />
         ) : (
           (() => {
-            const daily = seriesData?.["Time Series (Daily)"] as
-              | Record<string, { [k: string]: string }>
-              | undefined;
-            const points = daily
-              ? Object.keys(daily)
-                  .sort()
-                  .map((date) => ({
-                    date,
-                    close: parseFloat(daily[date]["4. close"]) || 0,
-                  }))
-                  .slice(-(rangeDays === 7 ? 7 : 30))
-              : [];
-            const i1 = Math.floor((points.length * 1) / 4);
-            const i2 = Math.floor((points.length * 2) / 4);
-            const i3 = Math.floor((points.length * 3) / 4);
-            const labelIndices = new Set([i1, i2, i3]);
-            const formatMd = (iso: string) => {
-              const d = new Date(iso);
-              return `${(d.getMonth() + 1).toString().padStart(2, "0")}/${d
-                .getDate()
-                .toString()
-                .padStart(2, "0")}`;
-            };
+            const points = formatTimeSeriesData(seriesData, rangeDays);
+            const labelIndices = getChartLabelIndices(points.length);
             const closes = points.map((p) => p.close);
             const minClose = Math.min(...closes);
             const maxClose = Math.max(...closes);
@@ -195,7 +153,7 @@ const Overview: React.FC = () => {
                       ) => labelIndices.has(index),
                       valueFormatter: (value: string | number) =>
                         typeof value === "string"
-                          ? formatMd(value)
+                          ? formatChartDate(value)
                           : String(value),
                     },
                   ]}

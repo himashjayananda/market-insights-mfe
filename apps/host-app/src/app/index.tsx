@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import AppLayout from "../shared/layouts/AppLayout";
 import HomePage from "../features/search/HomePage";
-import Overview from "../features/overview/Overview";
+import { Overview } from "../features/overview";
 import FinancialStatements from "../features/financials/FinancialStatements";
 import NewsFeed from "../features/news/NewsFeed";
 import CompanyLayout from "../features/company/CompanyLayout";

@@ -1,5 +1,4 @@
 import type {
-  CompanyOverview,
   IncomeStatement,
   BalanceSheet,
   CashFlow,
@@ -8,8 +7,6 @@ import type {
 } from "../types/api";
 
 // Mock data imports
-import companyOverviewData from "../../mocks/company-overview.json";
-import companyOverviewMSFT from "../../mocks/company-overview-msft.json";
 import incomeStatementData from "../../mocks/income-statement.json";
 import incomeStatementMSFT from "../../mocks/income-statement-msft.json";
 import balanceSheetData from "../../mocks/balance-sheet.json";
@@ -19,8 +16,6 @@ import cashFlowMSFT from "../../mocks/cash-flow-msft.json";
 import newsSentimentData from "../../mocks/news-sentiment.json";
 import newsSentimentMSFT from "../../mocks/news-sentiment-msft.json";
 import searchResultsData from "../../mocks/search-results.json";
-import timeSeriesDailyData from "../../mocks/time-series-daily.json";
-import timeSeriesDailyMSFT from "../../mocks/time-series-daily-msft.json";
 
 // Simulate API delay
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -28,16 +23,6 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 // Mock API client that simulates Alpha Vantage API behavior
 export class MockApiClient {
   private baseDelay = 300; // Base delay in milliseconds
-
-  async getCompanyOverview(symbol: string): Promise<CompanyOverview> {
-    await delay(this.baseDelay + Math.random() * 200);
-
-    const sym = symbol.toUpperCase();
-    if (sym === "AAPL") return companyOverviewData as CompanyOverview;
-    if (sym === "MSFT") return companyOverviewMSFT as CompanyOverview;
-
-    throw new Error(`Company overview not found for symbol: ${symbol}`);
-  }
 
   async getIncomeStatement(symbol: string): Promise<IncomeStatement> {
     await delay(this.baseDelay + Math.random() * 200);
@@ -77,16 +62,6 @@ export class MockApiClient {
     if (sym === "MSFT") return newsSentimentMSFT as NewsSentiment;
 
     throw new Error(`News sentiment not found for symbol: ${symbol}`);
-  }
-
-  async getDailyTimeSeries(symbol: string): Promise<any> {
-    await delay(this.baseDelay + Math.random() * 200);
-
-    const sym = symbol.toUpperCase();
-    if (sym === "AAPL") return timeSeriesDailyData as any;
-    if (sym === "MSFT") return timeSeriesDailyMSFT as any;
-
-    throw new Error(`Time series not found for symbol: ${symbol}`);
   }
 
   async searchCompanies(keywords: string): Promise<SearchResponse> {
