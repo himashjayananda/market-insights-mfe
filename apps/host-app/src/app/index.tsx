@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import AppLayout from "../shared/layouts/AppLayout";
-import HomePage from "../features/search/HomePage";
+import { HomePage } from "../features/search";
 import { Overview } from "../features/overview";
-import FinancialStatements from "../features/financials/FinancialStatements";
-import NewsFeed from "../features/news/NewsFeed";
+import { FinancialStatements } from "../features/financials";
+import { NewsFeed } from "../features/news";
 import CompanyLayout from "../features/company/CompanyLayout";
 
 const App = () => {

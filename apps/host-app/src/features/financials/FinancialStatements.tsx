@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Typography, Tabs, Tab } from "@mui/material";
 import { Skeleton } from "@mui/material";
-import {
-  useIncomeStatement,
-  useBalanceSheet,
-  useCashFlow,
-} from "../../shared/hooks/useApi";
-import { DataTable, formatters } from "../../shared/components/DataTable";
+import { useIncomeStatement, useBalanceSheet, useCashFlow } from "./api/hooks";
+import { DataTable, formatters } from "./components/DataTable";
 import { ErrorState, LoadingState } from "../../shared/components/States";
 
 interface TabPanelProps {

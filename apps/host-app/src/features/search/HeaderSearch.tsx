@@ -14,8 +14,8 @@ import {
   IconButton,
 } from "@mui/material";
 import { Search as SearchIcon, Close as CloseIcon } from "@mui/icons-material";
-import { useCompanySearch } from "../../shared/hooks/useApi";
-import type { SearchResult } from "../../shared/types/api";
+import { useCompanySearch } from "./api/hooks";
+import type { SearchResult } from "./types";
 
 interface HeaderSearchProps {
   onClose?: () => void;

@@ -9,7 +9,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
-import HeaderSearch from "../../features/search/HeaderSearch";
+import { HeaderSearch } from "../../features/search";
 
 const AppLayout: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
