@@ -2,9 +2,9 @@ import React from "react";
 import { Outlet, Link as RouterLink, useParams } from "react-router-dom";
 import { Box, Typography, Chip, Breadcrumbs, Link } from "@mui/material";
 import { Skeleton } from "@mui/material";
-import CompanyTabs from "../../shared/components/CompanyTabs";
-import { useCompanyOverview } from "../overview";
-import { ErrorState } from "../../shared/components/States";
+import CompanyTabs from "../shared/components/CompanyTabs";
+import { useCompanyOverview } from "../features/overview/api/hooks";
+import { ErrorState } from "../shared/components/States";
 
 const CompanyLayout: React.FC = () => {
   const { ticker } = useParams<{ ticker: string }>();

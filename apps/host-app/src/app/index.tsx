@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import AppLayout from "../shared/layouts/AppLayout";
+import AppLayout from "../layouts/AppLayout";
 import { HomePage } from "../features/search";
 import { Overview } from "../features/overview";
 import { FinancialStatements } from "../features/financials";
 import { NewsFeed } from "../features/news";
-import CompanyLayout from "../features/company/CompanyLayout";
+import CompanyLayout from "../layouts/CompanyLayout";
 
 const App = () => {
   return (
