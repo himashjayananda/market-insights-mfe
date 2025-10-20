@@ -9,12 +9,11 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
     federation({
-      name: "host_app",
+      name: "news_remote",
       filename: "remoteEntry.js",
-      remotes: {
-        overview_remote: "http://localhost:3002/assets/remoteEntry.js",
-        financials_remote: "http://localhost:3003/assets/remoteEntry.js",
-        news_remote: "http://localhost:3004/assets/remoteEntry.js",
+      exposes: {
+        "./NewsFeed": "./src/NewsFeed.tsx",
+        "./api/hooks": "./src/api/hooks.ts",
       },
       shared: {
         react: {
@@ -53,11 +52,11 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 3000,
+    port: 3004,
     cors: true,
   },
   preview: {
-    port: 3000,
+    port: 3004,
   },
   build: {
     target: "esnext",

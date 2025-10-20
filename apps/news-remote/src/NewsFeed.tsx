@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -12,7 +11,6 @@ import {
 import { Skeleton } from "@mui/material";
 import { OpenInNew, CalendarToday, Person } from "@mui/icons-material";
 import { useCompanyNews } from "./api/hooks";
-import { ErrorState } from "../../shared/components/States";
 import {
   formatDate,
   getSentimentColor,
@@ -20,9 +18,12 @@ import {
   calculateSentimentSummary,
 } from "./utils";
 
-const NewsFeed: React.FC = () => {
-  const { ticker } = useParams<{ ticker: string }>();
-  const { data: newsData, isLoading, error } = useCompanyNews(ticker || "");
+interface NewsFeedProps {
+  ticker: string;
+}
+
+const NewsFeed: React.FC<NewsFeedProps> = ({ ticker }) => {
+  const { data: newsData, isLoading, error } = useCompanyNews(ticker);
 
   // Memoize articles to prevent dependency issues
   const articles = React.useMemo(() => {
@@ -101,10 +102,14 @@ const NewsFeed: React.FC = () => {
 
   if (error || !newsData) {
     return (
-      <ErrorState
-        title="News not found"
-        message={`Unable to load news for ${ticker}. Please try a different company.`}
-      />
+      <Box sx={{ textAlign: "center", py: 4 }}>
+        <Typography variant="h6" color="error" gutterBottom>
+          News not found
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Unable to load news for {ticker}. Please try a different company.
+        </Typography>
+      </Box>
     );
   }
 
@@ -338,8 +343,6 @@ const NewsFeed: React.FC = () => {
           ))}
         </Box>
       )}
-
-      {/* Navigation buttons removed in favor of tabs */}
     </Box>
   );
 };

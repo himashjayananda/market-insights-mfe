@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import AppLayout from "../layouts/AppLayout";
 import { HomePage } from "../features/search";
 import OverviewWrapper from "../features/overview/OverviewWrapper";
-import { FinancialStatements } from "../features/financials";
-import { NewsFeed } from "../features/news";
+import FinancialsWrapper from "../features/financials/FinancialsWrapper";
+import NewsWrapper from "../features/news/NewsWrapper";
 import CompanyLayout from "../layouts/CompanyLayout";
 
 const App = () => {
@@ -13,8 +13,8 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/company/:ticker" element={<CompanyLayout />}>
           <Route index element={<OverviewWrapper />} />
-          <Route path="financials" element={<FinancialStatements />} />
-          <Route path="news" element={<NewsFeed />} />
+          <Route path="financials" element={<FinancialsWrapper />} />
+          <Route path="news" element={<NewsWrapper />} />
         </Route>
       </Route>
     </Routes>

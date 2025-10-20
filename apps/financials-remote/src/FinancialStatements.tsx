@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import { Box, Typography, Tabs, Tab } from "@mui/material";
 import { Skeleton } from "@mui/material";
 import { useIncomeStatement, useBalanceSheet, useCashFlow } from "./api/hooks";
 import { DataTable, formatters } from "./components/DataTable";
-import { ErrorState, LoadingState } from "../../shared/components/States";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -20,25 +18,30 @@ const TabPanel: React.FC<TabPanelProps> = ({ children, value, index }) => {
   );
 };
 
-const FinancialStatements: React.FC = () => {
-  const { ticker } = useParams<{ ticker: string }>();
+interface FinancialStatementsProps {
+  ticker: string;
+}
+
+const FinancialStatements: React.FC<FinancialStatementsProps> = ({
+  ticker,
+}) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const {
     data: incomeData,
     isLoading: incomeLoading,
     error: incomeError,
-  } = useIncomeStatement(ticker || "");
+  } = useIncomeStatement(ticker);
   const {
     data: balanceData,
     isLoading: balanceLoading,
     error: balanceError,
-  } = useBalanceSheet(ticker || "");
+  } = useBalanceSheet(ticker);
   const {
     data: cashFlowData,
     isLoading: cashFlowLoading,
     error: cashFlowError,
-  } = useCashFlow(ticker || "");
+  } = useCashFlow(ticker);
 
   const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
@@ -86,10 +89,15 @@ const FinancialStatements: React.FC = () => {
 
   if (incomeError || balanceError || cashFlowError) {
     return (
-      <ErrorState
-        title="Financial data not found"
-        message={`Unable to load financial statements for ${ticker}. Please try a different company.`}
-      />
+      <Box sx={{ textAlign: "center", py: 4 }}>
+        <Typography variant="h6" color="error" gutterBottom>
+          Financial data not found
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Unable to load financial statements for {ticker}. Please try a
+          different company.
+        </Typography>
+      </Box>
     );
   }
 
@@ -264,8 +272,6 @@ const FinancialStatements: React.FC = () => {
           emptyMessage="No cash flow data available"
         />
       </TabPanel>
-
-      {/* Navigation buttons removed in favor of tabs */}
     </Box>
   );
 };
