@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Container, Paper } from "@mui/material";
+import { Box, Typography, Container, Paper } from "@market-insights/ui";
 import HomeSearch from "./HomeSearch";
 
 const HomePage: React.FC = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Box, Typography, Tabs, Tab } from "@mui/material";
-import { Skeleton } from "@mui/material";
+import { Box, Typography, Tabs, Tab } from "@market-insights/ui";
+import { Skeleton } from "@market-insights/ui";
 import { useIncomeStatement, useBalanceSheet, useCashFlow } from "./api/hooks";
 import { DataTable, formatters } from "./components/DataTable";
 

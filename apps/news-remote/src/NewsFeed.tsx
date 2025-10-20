@@ -7,9 +7,9 @@ import {
   CardMedia,
   Chip,
   Button,
-} from "@mui/material";
-import { Skeleton } from "@mui/material";
-import { OpenInNew, CalendarToday, Person } from "@mui/icons-material";
+} from "@market-insights/ui";
+import { Skeleton } from "@market-insights/ui";
+import { OpenInNew, CalendarToday, Person } from "@market-insights/ui/icons";
 import { useCompanyNews } from "./api/hooks";
 import {
   formatDate,

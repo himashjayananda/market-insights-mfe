@@ -11,8 +11,8 @@ import {
   Box,
   Typography,
   CircularProgress,
-} from "@mui/material";
-import { Search as SearchIcon } from "@mui/icons-material";
+} from "@market-insights/ui";
+import { Search as SearchIcon } from "@market-insights/ui/icons";
 import { useCompanySearch } from "./api/hooks";
 import type { SearchResult } from "./types";
 

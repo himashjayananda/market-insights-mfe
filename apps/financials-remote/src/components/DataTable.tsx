@@ -9,8 +9,8 @@ import {
   Paper,
   Typography,
   Box,
-} from "@mui/material";
-import type { TableProps } from "@mui/material";
+} from "@market-insights/ui";
+import type { TableProps } from "@market-insights/ui";
 
 interface DataTableColumn {
   id: string;

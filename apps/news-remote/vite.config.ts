@@ -24,29 +24,13 @@ export default defineConfig({
           singleton: true,
           requiredVersion: "^19.0.0",
         },
-        "@mui/material": {
-          singleton: true,
-          requiredVersion: "^7.0.0",
-        },
-        "@mui/icons-material": {
-          singleton: true,
-          requiredVersion: "^7.0.0",
-        },
-        "@emotion/react": {
-          singleton: true,
-          requiredVersion: "^11.0.0",
-        },
-        "@emotion/styled": {
-          singleton: true,
-          requiredVersion: "^11.0.0",
-        },
         "@tanstack/react-query": {
           singleton: true,
           requiredVersion: "^5.0.0",
         },
-        "react-router-dom": {
+        "@market-insights/ui": {
           singleton: true,
-          requiredVersion: "^7.0.0",
+          requiredVersion: "^1.0.0",
         },
       },
     }),

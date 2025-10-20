@@ -4,12 +4,16 @@ import {
   Typography,
   ToggleButton,
   ToggleButtonGroup,
-} from "@mui/material";
-import { Skeleton } from "@mui/material";
-import { TrendingUp, TrendingDown, AttachMoney } from "@mui/icons-material";
+  Skeleton,
+} from "@market-insights/ui";
+import {
+  TrendingUp,
+  TrendingDown,
+  AttachMoney,
+} from "@market-insights/ui/icons";
 import { useCompanyOverview, useDailyTimeSeries } from "./api/hooks";
 import { CustomCard } from "./components/Card";
-import { LineChart } from "@mui/x-charts";
+import { LineChart } from "@market-insights/ui/charts";
 import { ErrorState } from "./components/ErrorState";
 import {
   formatCurrency,

@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs, Tab, Box } from "@mui/material";
+import { Tabs, Tab, Box } from "@market-insights/ui";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 const tabDefs = [

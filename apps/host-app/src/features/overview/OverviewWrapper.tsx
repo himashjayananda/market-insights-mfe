@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { useParams } from "react-router-dom";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@market-insights/ui";
 
 // Simple lazy import of remote Overview component
 const RemoteOverview = lazy(() => import("overview_remote/Overview"));

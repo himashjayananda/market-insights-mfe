@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button, Alert } from "@mui/material";
+import { Box, Typography, Button, Alert } from "@market-insights/ui";
 
 interface EmptyStateProps {
   title: string;

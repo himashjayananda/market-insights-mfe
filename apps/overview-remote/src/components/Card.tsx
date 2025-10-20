@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, CardContent, Skeleton } from "@mui/material";
-import type { CardProps } from "@mui/material";
+import { Card, CardContent, Skeleton } from "@market-insights/ui";
+import type { CardProps } from "@market-insights/ui";
 
 interface CustomCardProps extends CardProps {
   children: React.ReactNode;
@@ -28,4 +28,3 @@ export const CustomCard: React.FC<CustomCardProps> = ({
     </Card>
   );
 };
-

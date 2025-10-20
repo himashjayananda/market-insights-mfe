@@ -12,8 +12,11 @@ import {
   Typography,
   CircularProgress,
   IconButton,
-} from "@mui/material";
-import { Search as SearchIcon, Close as CloseIcon } from "@mui/icons-material";
+} from "@market-insights/ui";
+import {
+  Search as SearchIcon,
+  Close as CloseIcon,
+} from "@market-insights/ui/icons";
 import { useCompanySearch } from "./api/hooks";
 import type { SearchResult } from "./types";
 

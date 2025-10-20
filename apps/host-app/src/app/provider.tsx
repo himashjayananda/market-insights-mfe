@@ -2,9 +2,7 @@ import { type PropsWithChildren } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
-import { theme } from "../theme";
+import { ThemeProvider, CssBaseline } from "@market-insights/ui";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,7 +16,7 @@ const queryClient = new QueryClient({
 const AppProvider = ({ children }: PropsWithChildren) => {
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
         <CssBaseline />
         <QueryClientProvider client={queryClient}>
           {children}

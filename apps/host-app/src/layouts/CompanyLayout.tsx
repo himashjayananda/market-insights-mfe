@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, Link as RouterLink, useParams } from "react-router-dom";
-import { Box, Typography, Chip, Breadcrumbs, Link } from "@mui/material";
-import { Skeleton } from "@mui/material";
+import { Box, Typography, Chip, Breadcrumbs, Link } from "@market-insights/ui";
+import { Skeleton } from "@market-insights/ui";
 import CompanyTabs from "../shared/components/CompanyTabs";
 import { useCompanyOverview } from "overview_remote/api/hooks";
 import { ErrorState } from "../shared/components/States";

@@ -2,9 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import { ThemeProvider, CssBaseline } from "@market-insights/ui";
 import Overview from "./Overview";
 
 const queryClient = new QueryClient({
@@ -16,21 +14,10 @@ const queryClient = new QueryClient({
   },
 });
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#1E6FFF",
-    },
-    secondary: {
-      main: "#FF6B35",
-    },
-  },
-});
-
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
         <CssBaseline />
         <BrowserRouter>
           <Overview ticker="AAPL" />

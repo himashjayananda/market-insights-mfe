@@ -1,16 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider, CssBaseline } from "@market-insights/ui";
 import FinancialStatements from "./FinancialStatements";
-
-// Create a theme instance
-const theme = createTheme({
-  palette: {
-    mode: "light",
-  },
-});
 
 // Create a client
 const queryClient = new QueryClient({
@@ -26,7 +18,7 @@ const queryClient = new QueryClient({
 const MockFinancialStatements: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
         <CssBaseline />
         <div style={{ padding: "20px" }}>
           <FinancialStatements ticker="AAPL" />

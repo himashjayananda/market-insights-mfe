@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button } from "@market-insights/ui";
 
 interface ErrorStateProps {
   title: string;
@@ -38,4 +38,3 @@ export const ErrorState: React.FC<ErrorStateProps> = ({
     </Box>
   );
 };
-

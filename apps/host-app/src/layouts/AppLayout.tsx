@@ -7,8 +7,8 @@ import {
   Container,
   Box,
   IconButton,
-} from "@mui/material";
-import { Search as SearchIcon } from "@mui/icons-material";
+} from "@market-insights/ui";
+import { Search as SearchIcon } from "@market-insights/ui/icons";
 import { HeaderSearch } from "../features/search";
 
 const AppLayout: React.FC = () => {
